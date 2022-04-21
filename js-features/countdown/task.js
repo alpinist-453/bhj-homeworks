@@ -1,6 +1,7 @@
 
+const initial = document.getElementById("timer");
+
 const addText = function(){
-    const initial = document.getElementById("timer");
     initial.textContent -= 1;
     if (initial.textContent === '-1') {
         alert("«Вы победили в конкурсе!»")
