@@ -6,6 +6,7 @@ let arrSave = [];
 sliderNext.onclick = next;
 sliderPrev.onclick = prev;
 
+
 function next() {
 	arrSave = arrSliders.splice(0, 1);
 	arrSave.forEach(el => { el.classList.remove('slider__item_active') });
@@ -14,9 +15,19 @@ function next() {
 }
 
 function prev() {
-	arrSave = arrSliders.splice(4, 1);
+	arrSave = arrSliders.splice(arrSliders.length - 1, 1);
 	arrSave.forEach(el => { el.classList.remove('slider__item_active') });
-	arrSliders.forEach(el => { el.classList.remove('slider__item_active') });
+	const indexDelete = arrSliders.findIndex(el => document.querySelector('.slider__item_active'));
+	arrSliders[indexDelete].classList.remove('slider__item_active');
 	arrSliders = arrSave.concat(arrSliders);
 	arrSliders[0].classList.add('slider__item_active');
 }
+
+
+// function prev() {
+// 	arrSave = arrSliders.splice(arrSliders.length - 1, 1);
+// 	arrSave.forEach(el => { el.classList.remove('slider__item_active') });
+// 	arrSliders.forEach(el => { el.classList.remove('slider__item_active') });
+// 	arrSliders = arrSave.concat(arrSliders);
+// 	arrSliders[0].classList.add('slider__item_active');
+// }

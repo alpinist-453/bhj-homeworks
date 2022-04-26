@@ -8,15 +8,16 @@ active.classList.add("modal_active");
 ArrClose.forEach(el => { el.onclick = close });
 
 show.onclick = function () {
-	activeGreen.classList.add("modal_active")
+	activeGreen.classList.add("modal_active");
+	active.classList.remove("modal_active");
 }
 
 activeGreen.onclick = function () {
-	activeGreen.classList.remove("modal_active")
+	activeGreen.classList.remove("modal_active");
+	active.classList.remove("modal_active");
 }
 
 function close() {
-	activeGreen.classList.remove("modal_active")
-	active.classList.remove("modal_active")
+	activeGreen.classList.remove("modal_active");
+	active.classList.remove("modal_active");
 }
-
