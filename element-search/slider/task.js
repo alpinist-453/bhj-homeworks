@@ -16,18 +16,9 @@ function next() {
 
 function prev() {
 	arrSave = arrSliders.splice(arrSliders.length - 1, 1);
-	arrSave.forEach(el => { el.classList.remove('slider__item_active') });
-	const indexDelete = arrSliders.findIndex(el => document.querySelector('.slider__item_active'));
+	arrSave.forEach(el => { el.class === '.item__menu item__menu__activ' });
+	const indexDelete = arrSliders.findIndex(el => Array.from(el.classList).includes('slider__item_active'));
 	arrSliders[indexDelete].classList.remove('slider__item_active');
 	arrSliders = arrSave.concat(arrSliders);
 	arrSliders[0].classList.add('slider__item_active');
 }
-
-
-// function prev() {
-// 	arrSave = arrSliders.splice(arrSliders.length - 1, 1);
-// 	arrSave.forEach(el => { el.classList.remove('slider__item_active') });
-// 	arrSliders.forEach(el => { el.classList.remove('slider__item_active') });
-// 	arrSliders = arrSave.concat(arrSliders);
-// 	arrSliders[0].classList.add('slider__item_active');
-// }
