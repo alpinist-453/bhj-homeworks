@@ -21,3 +21,4 @@ function close() {
 	activeGreen.classList.remove("modal_active");
 	active.classList.remove("modal_active");
 }
+
