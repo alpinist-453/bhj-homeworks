@@ -3,7 +3,7 @@ const hasTooltips = document.querySelectorAll('.has-tooltip');
 for (let i = 0; i < hasTooltips.length; i++) {
 	const hasTooltip = hasTooltips[i];
 
-	hasTooltip.addEventListener('click', (event) => {
+	hasTooltip.addEventListener('click', event => {
 		event.preventDefault();
 		const tipActiv = document.querySelector('.tooltip_active');
 		const position = hasTooltip.getBoundingClientRect();
@@ -14,10 +14,14 @@ for (let i = 0; i < hasTooltips.length; i++) {
 		newDiv.style.left = position.x + 10 + 'px';
 		newDiv.style.top = position.y + 20 + 'px';
 
+		console.log(hasTooltip);
+
 		newDiv.innerHTML = hasTooltip.title;
 
 		hasTooltip.appendChild(newDiv);
 
-		if (tipActiv) { tipActiv.classList.remove('tooltip_active') };
+		if (tipActiv) {
+			tipActiv.classList.remove('tooltip_active')
+		};
 	})
 }

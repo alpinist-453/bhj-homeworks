@@ -8,8 +8,10 @@ for (let i = 0; i < controlDecs.length; i++) {
 	const controlDec = controlDecs[i];
 
 	controlDec.addEventListener('click', () => {
-		if (productQuantitys[i].textContent !== '1') {
-			productQuantitys[i].textContent = --productQuantitys[i].textContent;
+		productQuantitys[i].textContent = --productQuantitys[i].textContent;
+
+		if (productQuantitys[i].textContent === '1' || productQuantitys[i].textContent === '0') {
+			productQuantitys[i].textContent = '1'
 		}
 	})
 }
@@ -18,7 +20,6 @@ for (let i = 0; i < controlIncs.length; i++) {
 	const controlInc = controlIncs[i];
 
 	controlInc.addEventListener('click', () => {
-		console.log(productQuantitys[i].textContent);
 		productQuantitys[i].textContent = ++productQuantitys[i].textContent;
 	})
 }
@@ -32,15 +33,14 @@ for (let i = 0; i < btnProductsAdd.length; i++) {
 		const id = product.dataset.id;
 		const countFromProduct = +event.target.parentNode.querySelector('.product__quantity-value').textContent;
 
-		for (let item of cart.children) {
 
-			if (item.dataset.id === id) {
-				let productCount = item.querySelector('.cart__product-count');
-				let total = +productCount.textContent;
-				productCount.textContent = total + countFromProduct;
+		const foundCartItem = Array.from(cart.children).find(item => item.dataset.id === id);
+		if (foundCartItem) {
+			let productCount = item.querySelector('.cart__product-count');
+			let total = +productCount.textContent;
+			productCount.textContent = total + countFromProduct;
 
-				return false;
-			}
+			return false;
 		}
 
 		const productImg = product.querySelector('.product__image').src;

@@ -1,7 +1,7 @@
 const btnAdd = document.getElementById('tasks__add');
 
-btnAdd.addEventListener('click', () => {
-
+btnAdd.addEventListener('click', event => {
+	event.preventDefault();
 	const taskInput = document.getElementById('task__input').value;
 	const tasksList = document.getElementById('tasks__list');
 
@@ -10,19 +10,22 @@ btnAdd.addEventListener('click', () => {
   							<a href="#" class="task__remove">&times;</a>
 						</div>`
 
-	if (taskInput) {
+	if (taskInput.trim().length !== 0) {
+
 		tasksList.insertAdjacentHTML('beforeend', spisokCart);
-	}
+
+	} else { alert('введите текс') }
+
+	document.getElementById('task__input').value = "";
 
 	const taskRemoves = document.querySelectorAll('.task__remove');
 
 	for (let i = 0; i < taskRemoves.length; i++) {
-		const taskRemove = taskRemoves[i];
 		const task = document.querySelectorAll('.task');
 
-		taskRemove.addEventListener('click', () => {
+		taskRemoves[i].onclick = function () {
 			task[i].remove();
-		})
+		}
 	}
 })
 
