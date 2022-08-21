@@ -5,23 +5,21 @@ for (let i = 0; i < hasTooltips.length; i++) {
 
 	hasTooltip.addEventListener('click', event => {
 		event.preventDefault();
+
 		const tipActiv = document.querySelector('.tooltip_active');
 		const position = hasTooltip.getBoundingClientRect();
 		const newDiv = document.createElement("div");
 
-		newDiv.setAttribute("class", "tooltip tooltip_active");
-		newDiv.setAttribute("style", "left: 0; top: 0");
+		console.log('tipActiv', tipActiv);
+
+		newDiv.className = "tooltip tooltip_active";
 		newDiv.style.left = position.x + 10 + 'px';
 		newDiv.style.top = position.y + 20 + 'px';
 
-		console.log(hasTooltip);
-
 		newDiv.innerHTML = hasTooltip.title;
 
-		hasTooltip.appendChild(newDiv);
+		if (tipActiv) { tipActiv.remove() }
 
-		if (tipActiv) {
-			tipActiv.classList.remove('tooltip_active')
-		};
+		hasTooltip.appendChild(newDiv);
 	})
 }
